@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>GeoServices Explorer</title>
+  <meta name="description" content="Map Explorer for GeoServices">
+  <meta name="author" content="Jürgen Gstaltmaier">
+
+  <link rel="stylesheet" href="content/lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="content/lib/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="content/css/geoservicesexplorer.css">
+
+  <style>
+        html, body, #map {
+          margin:0; padding:0;  width : 100%; height : 100%;
+        }
+  </style>
+</head>
+
+<body>
+
+  <div id="geoservices-explorer-container"></div>
+
+  <script src="content/lib/jquery/dist/jquery.min.js"></script>
+  <script src="content/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="content/lib/bootbox.js/dist/bootbox.min.js"></script>
+  <script src="content/lib/leaflet/dist/leaflet.js"></script>
+  <script src="content/lib/esri-leaflet/dist/esri-leaflet.js"></script>
+
+  <script src="content/scripts/geoservicesexplorer-app.js"></script>
+  <script src="content/scripts/geoservicesexplorer-ui.js"></script>
+  <script src="content/scripts/geoservicesexplorer-server.js"></script>
+  <script src="content/scripts/geoservicesexplorer-service.js"></script>
+
+  <script>
+
+        GeoServicesExplorer.app.init('geoservices-explorer-container');
+
+        //var map = L.map('map').setView([0, 0], 1);
+        //L.esri.basemapLayer("Gray").addTo(map);
+  
+        /*
+        var parks = L.esri.featureLayer({
+          url: "https://localhost:44331/geoservices/rest/services/UEBERSICHTSKARTE/FeatureServer/10",
+          style: function () {
+            return { color: "#70ca49", weight: 2 };
+          }
+        }).addTo(map);
+  
+        var popupTemplate = "<h3>{NAME}</h3>{ACRES} Acres<br><small>Property ID: {PROPERTYID}<small>";
+  
+        parks.bindPopup(function(e){
+          return L.Util.template(popupTemplate, e.feature.properties)
+        });      
+        */
+
+        /*
+        var dynamicLayer=L.esri.dynamicMapLayer({
+            url:"https://localhost:44331/geoservices/rest/services/UEBERSICHTSKARTE/MapServer",
+            //url: 'https://services.arcgisonline.com/arcgis/rest/services/Specialty/Soil_Survey_Map/MapServer',
+            opacity: 0.7
+        }).addTo(map);
+
+        dynamicLayer.setLayers([10]);
+        */
+   </script>
+</body>
+</html>

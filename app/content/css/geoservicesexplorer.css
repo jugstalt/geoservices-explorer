@@ -1,0 +1,211 @@
+html, body, .geoservices-explorer-container {
+    margin:0; padding:0;  width : 100%; height : 100%;
+}
+
+.geoservices-explorer-container {
+    position: relative;
+}
+
+.geoservices-explorer-container .geoservices-explorer-toolbar {
+    position: absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    height: 60px;
+    box-sizing: border-box;
+    padding: 3px;
+}
+
+.geoservices-explorer-container .geoservices-explorer-toolbar .tool {
+    width:54px;
+    height:54px;
+    background-repeat:no-repeat;
+    background-position:center 4px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.geoservices-explorer-container .geoservices-explorer-toolbar .tool div {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 18px;
+    font-size: 8.25px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.geoservices-explorer-container .geoservices-explorer-toolbar .tool div.count {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 14px;
+    left:unset;
+    width:14px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 8.25px;
+    text-align: center;
+    display:none;
+}
+
+
+.geoservices-explorer-container .geoservices-explorer-toolbar .tool.addserver {
+    background-image:url(../img/icons8-add-30.png);
+}
+
+.geoservices-explorer-container .geoservices-explorer-toolbar .tool.servers {
+    background-image:url(../img/icons8-globe-earth-30.png);
+}
+
+.geoservices-explorer-container .geoservices-explorer-toolbar .tool.services {
+    background-image:url(../img/icons8-globe-earth-30.png);
+}
+
+.geoservices-explorer-container .geoservices-explorer-sidebar {
+    position: absolute;
+    top:60px;
+    left:0px;
+    bottom:0px;
+    width:0px;
+    transition: width .3s ease-in;
+}
+.geoservices-explorer-container .geoservices-explorer-map {
+    position: absolute;
+    top:60px;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    transition: left .3s ease-in;
+}
+
+.geoservices-explorer-container.showsidebar .geoservices-explorer-sidebar {
+    width:480px;
+    max-width: 100%;
+}
+.geoservices-explorer-container.showsidebar .geoservices-explorer-map {
+    left:480px;
+}
+
+.geoservices-explorer-sidebarpanel {
+    position: absolute;
+    left:0px;
+    right:0px;
+    top: 0px;
+    bottom: 0px;
+    background-color:white;
+}
+.geoservices-explorer-sidebarpanel .geoservices-explorer-sidebarpanel-title {
+    background-color:#eee;
+    padding:4px 35px 4px 4px;
+    font-size:18px;
+    font-weight: bold;
+    position: relative
+    height:35px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.geoservices-explorer-sidebarpanel .geoservices-explorer-sidebarpanel-title .geoservices-explorer-sidebarpanel-close {
+    position: absolute;
+    right:0px;
+    top:0px;
+    width:35px;
+    height:35px;
+    cursor:pointer;
+    font-weight: lighter;
+    text-align: center;
+    padding:3px;
+}
+
+.geoservices-explorer-sidebarpanel .geoservices-explorer-sidebarpanel-content {
+    padding:10px;
+    position: absolute;
+    top: 35px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+}
+
+.geoservices-explorer-clickable {
+    cursor:pointer;
+}
+
+.geoservices-explorer-list {
+    list-style: none;
+    padding: 0px;
+}
+
+.geoservices-explorer-list .geoservices-explorer-list-item{
+    padding: 5px 5px 5px 36px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+.geoservices-explorer-list .geoservices-explorer-list-item:hover{
+    background-color: #efefef;
+}
+
+
+.geoservices-explorer-list .geoservices-explorer-list-item .subtext{
+    font-size: .8em;
+    color: #aaa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.geoservices-explorer-list .geoservices-explorer-list-item .addbutton{
+    opacity: .2;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width:40px;
+    height:60px;
+    background-image: url(../img/icons8-add-30.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.geoservices-explorer-list .geoservices-explorer-list-item:hover .addbutton{
+    opacity: 1;
+}
+
+.geoservices-explorer-list .geoservices-explorer-list-item.server {
+    background-image:url(../img/icons8-globe-earth-30.png);
+}
+.geoservices-explorer-list .geoservices-explorer-list-item.folder {
+    background-image:url(../img/icons8-folder-30.png);
+}
+.geoservices-explorer-list .geoservices-explorer-list-item.mapserver {
+    background-image:url(../img/icons8-map-30.png);
+}
+.geoservices-explorer-list .geoservices-explorer-list-item.featureserver {
+    background-image:url(../img/icons8-polygon-30.png);
+}
+.geoservices-explorer-list .geoservices-explorer-list-item.back {
+    background-image:url(../img/icons8-back-30.png);
+}
+
+.geoservices-explorer-nodeitem {
+    padding-left: 19px;
+    background-repeat: no-repeat;
+    background-position: left 4px;
+    background-image: url(../img/icons8-unchecked-checkbox-16.png);
+    cursor: pointer;
+}
+
+.geoservices-explorer-nodeitem.checked {
+    background-image: url(../img/icons8-checked-checkbox-16.png);
+}
+
+.geoservices-explorer-nodeitem ul {
+    list-style: none;
+    padding-left: 20px;
+}

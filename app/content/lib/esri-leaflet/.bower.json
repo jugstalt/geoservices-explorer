@@ -1,0 +1,29 @@
+{
+  "name": "esri-leaflet",
+  "description": "Leaflet plugins for consuming ArcGIS Online and ArcGIS Server services.",
+  "license": "Apache-2.0",
+  "main": "dist/esri-leaflet.js",
+  "dependencies": {
+    "leaflet": "^1.0.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "examples",
+    "spec",
+    "site"
+  ],
+  "homepage": "https://github.com/Esri/esri-leaflet",
+  "version": "2.3.1",
+  "_release": "2.3.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.3.1",
+    "commit": "4b0df92dcaafcc1f4a3e19a4427982c2d12b920d"
+  },
+  "_source": "https://github.com/Esri/esri-leaflet.git",
+  "_target": "^2.3.1",
+  "_originalSource": "esri-leaflet",
+  "_direct": true
+}
