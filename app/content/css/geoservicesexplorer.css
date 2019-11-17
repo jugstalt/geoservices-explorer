@@ -86,6 +86,7 @@ html, body, .geoservices-explorer-container {
 .geoservices-explorer-container.showsidebar .geoservices-explorer-sidebar {
     width:480px;
     max-width: 100%;
+    overflow:hidden;
 }
 .geoservices-explorer-container.showsidebar .geoservices-explorer-map {
     left:480px;
@@ -94,11 +95,18 @@ html, body, .geoservices-explorer-container {
 .geoservices-explorer-sidebarpanel {
     position: absolute;
     left:0px;
-    right:0px;
+    width:0px;
     top: 0px;
     bottom: 0px;
     background-color:white;
+    transition: width .3s ease-in;
+    box-shadow: 4px 4px 9px rgba(0, 0, 0, .4);
 }
+
+.geoservices-explorer-sidebarpanel.show {
+    width:480px;
+}
+
 .geoservices-explorer-sidebarpanel .geoservices-explorer-sidebarpanel-title {
     background-color:#eee;
     padding:4px 35px 4px 4px;
@@ -207,5 +215,5 @@ html, body, .geoservices-explorer-container {
 
 .geoservices-explorer-nodeitem ul {
     list-style: none;
-    padding-left: 20px;
+    padding-left: 0px;
 }

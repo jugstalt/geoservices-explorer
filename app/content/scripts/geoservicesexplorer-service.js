@@ -5,25 +5,35 @@ GeoServicesExplorer.service = function(name, url, type, token) {
     var _token = token;
 
     var _map = GeoServicesExplorer.app.map;
-    var _dynamicLayer = null;
+    var _dynamicLayer = null, _featureLayer = null;
     var _allLayers = [];
 
-    $.getJSON(`${ _url }/layers?f=json${ _token ? '&token='+_token : '' }`, function(allLayers) {
+    if(type.toLowerCase() === "mapserver") {
+        $.getJSON(`${ _url }/layers?f=json${ _token ? '&token='+_token : '' }`, function(allLayers) {
 
-        _allLayers = allLayers;
+            _allLayers = allLayers;
 
-        var visLayers = [];
-        $.each(_allLayers.layers, function(i, layer) {
-            if(layer.defaultVisibility === true) {
-                visLayers.push(layer.id);
-            }
+            var visLayers = [];
+            $.each(_allLayers.layers, function(i, layer) {
+                if(layer.defaultVisibility === true) {
+                    visLayers.push(layer.id);
+                }
+            });
+            _dynamicLayer=L.esri.dynamicMapLayer({
+                url: _url,
+                opacity: 1.0,
+                layers: visLayers
+            }).addTo(_map);
         });
-        _dynamicLayer=L.esri.dynamicMapLayer({
+    }
+    else if(type.toLowerCase() === "featureserver") {
+        _featureLayer = L.esri.featureLayer({
             url: _url,
-            opacity: 1.0,
-            layers: visLayers
-        }).addTo(_map);
-    });
+            style: function () {
+              return { color: "#70ca49", weight: 2 };
+            }
+          }).addTo(_map);
+    }
     
     this.getName = function() { return _name; };
     this.getUrl = function() { return _url; };

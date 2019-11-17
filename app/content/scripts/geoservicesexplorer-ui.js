@@ -60,6 +60,11 @@ GeoServicesExplorer.ui=new function() {
 
         this._container.addClass('showsidebar');    
 
+        setTimeout(function(){
+            $panel.addClass('show');
+        },1);
+        
+
         return $panel;
     };
 
@@ -77,10 +82,16 @@ GeoServicesExplorer.ui=new function() {
         if($panel.length>0) {
             var $sidebar=$panel.parent();
 
-            $panel.remove();
-            if($sidebar.children().length==0) {
-                GeoServicesExplorer.ui._container.removeClass('showsidebar');
-            }
+            setTimeout(() => {
+                $panel.removeClass('show');
+
+                if($sidebar.children().length <= 1) {
+                    GeoServicesExplorer.ui._container.removeClass('showsidebar');
+                }
+            },1);
+            setTimeout(() => {
+                $panel.remove();
+            }, 300);
         };
     };
 
@@ -154,7 +165,7 @@ GeoServicesExplorer.ui=new function() {
                 });
             
             $("<div>").text(item.text).appendTo($li);
-            if(item.subtext) {
+            if(item.subtext !== null) {
                 $("<div>")
                     .addClass('subtext')
                     .text(item.subtext)

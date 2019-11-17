@@ -1,6 +1,6 @@
 var GeoServicesExplorer={};
 
-GeoServicesExplorer.app = new function(){
+GeoServicesExplorer.app = new function($){
 
     var makeServerItemsList = function(server, folder) {
         var $panel = GeoServicesExplorer.ui.sidebarPanel('geoservices-explorer-servers-panel', 'Servers');
@@ -23,16 +23,42 @@ GeoServicesExplorer.app = new function(){
                             makeServerItemsList(item.server, folder)
                         }
                         if(service.type.toLowerCase() === "mapserver") {
-                            var service = new GeoServicesExplorer.service(service.name, service.url, service.type, '');
+                            addService(service.name, service.url, service.type, '');
+                        }
+                        if(service.type.toLowerCase() === "featureserver") {
+                            $.getJSON($.addUrlparameter(item.service.url, "f", "json"), function(result) {
+                                if(result.layers) {
+                                    var layers = $.map(result.layers, function(layer) {
+                                        return {
+                                            text: layer.name,
+                                            subtext: layer.id,
+                                            class: 'featureserver-layer',
+                                            showaddbutton: true,
+                                            service: service,
+                                            layer: layer,
+                                            onclick: function(item) {
+                                                addService(service.name + '/' + layer.name, service.url + '/' + layer.id, service.type, '');
+                                            }
+                                        }
+                                    });
+                                    var $panel = GeoServicesExplorer.ui.sidebarPanel('geoservices-explorer-servers-panel', 'Servers');
+                                    var $content = GeoServicesExplorer.ui.sidebarPanelContent($panel).empty(); 
 
-                            GeoServicesExplorer.app.services.push(service);
-                            var $toolServices = $('.tool.services');
-                            $toolServices.find('.count')
-                                         .css('display','block')
-                                         .text(GeoServicesExplorer.app.services.length);
+                                    GeoServicesExplorer.ui.clickableList($content, [
+                                        {
+                                            text: '..',
+                                            class: 'back',
+                                            folder: item.folder,
+                                            server: item.server,
+                                            onclick: function(item) {
+                                                makeServerItemsList(item.server, item.folder);
+                                            }
+                                        }
+                                    ]);
 
-                            $toolServices.trigger('click');
-                            //GeoServicesExplorer.ui.closeSidebarPanel('geoservices-explorer-servers-panel');
+                                    GeoServicesExplorer.ui.clickableList($content, layers);
+                                }
+                            });
                         }
                     }
                 };
@@ -54,6 +80,18 @@ GeoServicesExplorer.app = new function(){
             }
             GeoServicesExplorer.ui.clickableList($content, items);
         });
+    };
+
+    var addService = function(name, url, type, token) {
+        var service = new GeoServicesExplorer.service(name, url, type, token);
+
+        GeoServicesExplorer.app.services.push(service);
+        var $toolServices = $('.tool.services');
+        $toolServices.find('.count')
+                     .css('display','block')
+                     .text(GeoServicesExplorer.app.services.length);
+
+        $toolServices.trigger('click');
     };
 
     this.map=null;
@@ -195,4 +233,12 @@ GeoServicesExplorer.app = new function(){
 
     this.servers=[];
     this.services=[];
-}();
+
+    $.extend({
+        addUrlparameter: function(url, parameter, value) {
+            url += url.indexOf("?")> 0 ? "&" : "?";
+            url += parameter + "=" + encodeURIComponent(value);
+            return url;
+        }
+    });
+}(jQuery);
