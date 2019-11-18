@@ -213,6 +213,10 @@ html, body, .geoservices-explorer-container {
     background-image: url(../img/icons8-checked-checkbox-16.png);
 }
 
+.geoservices-explorer-nodeitem.parent {
+    background-image: url(../img/icons8-sort-down-16.png);
+}
+
 .geoservices-explorer-nodeitem ul {
     list-style: none;
     padding-left: 0px;

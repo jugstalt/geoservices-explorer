@@ -94,7 +94,7 @@ GeoServicesExplorer.app = new function($){
         $toolServices.trigger('click');
     };
 
-    this.map=null;
+    this.map = null;
     this.init=function(id) {
         GeoServicesExplorer.ui.init($(`#${id}`));
         
@@ -233,6 +233,12 @@ GeoServicesExplorer.app = new function($){
 
     this.servers=[];
     this.services=[];
+
+    this.refreshMap = function() {
+        if(this.map) {
+            this.map._onResize(); 
+        }
+    };
 
     $.extend({
         addUrlparameter: function(url, parameter, value) {

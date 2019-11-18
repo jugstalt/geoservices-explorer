@@ -59,7 +59,10 @@ GeoServicesExplorer.ui=new function() {
             .appendTo($panel);
 
         this._container.addClass('showsidebar');    
-
+        setTimeout(() => {
+            GeoServicesExplorer.app.refreshMap();
+        }, 500);
+        
         setTimeout(function(){
             $panel.addClass('show');
         },1);
@@ -87,6 +90,9 @@ GeoServicesExplorer.ui=new function() {
 
                 if($sidebar.children().length <= 1) {
                     GeoServicesExplorer.ui._container.removeClass('showsidebar');
+                    setTimeout(() => {
+                        GeoServicesExplorer.app.refreshMap();
+                    }, 500);
                 }
             },1);
             setTimeout(() => {
@@ -199,20 +205,25 @@ GeoServicesExplorer.ui=new function() {
                 .addClass('geoservices-explorer-nodeitem')
                 .attr('data-id', node.id);
             
-            if(node.checked === true) {
-                $item.addClass('checked');
-            }
-            if(node.onclick) {
-                $item.data('node', node).click(function(e) {
-                    e.stopPropagation();
+            if(node.isParent) {
+                $item.addClass('parent');
+            } else {
+                if(node.checked === true) {
+                    $item.addClass('checked');
+                }
 
-                    var node = $(this).data('node');
-                    if(node.onclick(node) === true) {
-                        $(this).addClass('checked');
-                    } else {
-                        $(this).removeClass('checked');
-                    }
-                });
+                if(node.onclick) {
+                    $item.data('node', node).click(function(e) {
+                        e.stopPropagation();
+
+                        var node = $(this).data('node');
+                        if(node.onclick(node) === true) {
+                            $(this).addClass('checked');
+                        } else {
+                            $(this).removeClass('checked');
+                        }
+                    });
+                }
             }
 
             return $item;

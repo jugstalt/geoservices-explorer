@@ -15,7 +15,7 @@ GeoServicesExplorer.service = function(name, url, type, token) {
 
             var visLayers = [];
             $.each(_allLayers.layers, function(i, layer) {
-                if(layer.defaultVisibility === true) {
+                if(layer.type.toLowerCase() != 'group layer' && layer.defaultVisibility === true) {
                     visLayers.push(layer.id);
                 }
             });
