@@ -15,15 +15,15 @@
     "site"
   ],
   "homepage": "https://github.com/Esri/esri-leaflet",
-  "version": "2.3.1",
-  "_release": "2.3.1",
+  "version": "3.0.4",
+  "_release": "3.0.4",
   "_resolution": {
     "type": "version",
-    "tag": "v2.3.1",
-    "commit": "4b0df92dcaafcc1f4a3e19a4427982c2d12b920d"
+    "tag": "v3.0.4",
+    "commit": "22ff4d576d3a2f48ec6a0a8f5ed9be14a99eadf9"
   },
   "_source": "https://github.com/Esri/esri-leaflet.git",
-  "_target": "^2.3.1",
+  "_target": "^3.0.4",
   "_originalSource": "esri-leaflet",
   "_direct": true
 }
