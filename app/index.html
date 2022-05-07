@@ -9,7 +9,9 @@
   <meta name="author" content="Jürgen Gstaltmaier">
 
   <link rel="stylesheet" href="content/lib/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="content/lib/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
   <link rel="stylesheet" href="content/css/geoservicesexplorer.css">
 
   <style>
@@ -26,8 +28,16 @@
   <script src="content/lib/jquery/dist/jquery.min.js"></script>
   <script src="content/lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="content/lib/bootbox.js/dist/bootbox.min.js"></script>
-  <script src="content/lib/leaflet/dist/leaflet.js"></script>
-  <script src="content/lib/esri-leaflet/dist/esri-leaflet.js"></script>
+  
+  <!-- Load Leaflet from CDN -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"
+    integrity="sha512-E0DKVahIg0p1UHR2Kf9NX7x7TUewJb30mxkxEm2qOYTVJObgsAGpEol9F6iK6oefCbkJiA4/i6fnTHzM6H1kEA=="
+    crossorigin=""></script>
 
   <script src="content/scripts/geoservicesexplorer-app.js"></script>
   <script src="content/scripts/geoservicesexplorer-ui.js"></script>
