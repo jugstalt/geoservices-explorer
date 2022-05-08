@@ -4,7 +4,9 @@ GeoServicesExplorer.server = function(name, url, token) {
     var _token=token;
 
     this.getName = function() { return _name; };
+    
     this.getUrl = function() { return _url; };
+    
     this.isValid=function(callback) {
         $.getJSON(_url+'?f=json', function(result) {
             if(result.currentVersion) {
@@ -12,6 +14,7 @@ GeoServicesExplorer.server = function(name, url, token) {
             }
         });
     };
+
     this.getServices=function(folder, callback) {
         var url=_url +
                 (folder ? `/${folder}` : '') + 

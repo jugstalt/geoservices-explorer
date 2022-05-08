@@ -183,6 +183,19 @@ GeoServicesExplorer.ui=new function() {
                     .addClass('addbutton')
                     .appendTo($li);
             }
+
+            if(item.service && item.service.removeService) {
+                $("<div>")
+                    .addClass('removebutton')
+                    .appendTo($li)
+                    .click(function(e) {
+                        e.stopPropagation();
+
+                        var service = $(this).parent().data('item').service;
+                        GeoServicesExplorer.app.removeService(service);
+                        $(this).parent().remove();
+                    });
+            }
         });
     };
 

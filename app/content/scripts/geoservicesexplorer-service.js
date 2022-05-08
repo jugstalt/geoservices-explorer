@@ -51,4 +51,10 @@ GeoServicesExplorer.service = function(name, url, type, token) {
             _dynamicLayer.setLayers(layerIds);
         }
     }
+
+    this.removeService = function() {
+        var layer= _dynamicLayer || _featureLayer;
+        console.log(layer);
+        _map.removeLayer(layer);
+    };
 };
