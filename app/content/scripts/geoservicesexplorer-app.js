@@ -97,12 +97,12 @@ GeoServicesExplorer.app = new function($){
     };
 
     this.map = null;
-    this.init=function(id) {
+    this.init = function(id, initOptions) {
         GeoServicesExplorer.ui.init($(`#${id}`));
         
         var $toolbar=GeoServicesExplorer.ui._toolbar;
 
-        $("<div><div>Add Server</div></div>")
+        var $toolAddServer = $("<div><div>Add Server</div></div>")
             .addClass('tool addserver')
             .appendTo($toolbar)
             .click(function() {
@@ -148,6 +148,18 @@ GeoServicesExplorer.app = new function($){
                             }
                         ]
                     });
+
+                    if(initOptions.server) {
+                        var $inputName = $content.children('.form').find('input[name="name"]');
+                        var $inputServer = $content.children('.form').find('input[name="server"]');
+                        var $commitButton=$content.children('.form').find('button.btn-primary');
+
+                        $inputName.val(initOptions.serverName ?? "Server 1");
+                        $inputServer.val(initOptions.server);
+                        delete initOptions.server;
+
+                        $commitButton.trigger('click');
+                    }
                 }   
             });
 
@@ -236,7 +248,12 @@ GeoServicesExplorer.app = new function($){
             minZoom: 0,
             maxZoom: 21
         }).setView([0, 0], 1);
+
         L.esri.basemapLayer("Gray").addTo(this.map);
+
+        if(initOptions && initOptions.server) {
+            $toolAddServer.trigger('click');
+        }
     };
 
     this.servers=[];

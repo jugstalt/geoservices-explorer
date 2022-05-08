@@ -45,7 +45,11 @@
   <script src="content/scripts/geoservicesexplorer-service.js"></script>
 
   <script type="text/javascript">
-        GeoServicesExplorer.app.init('geoservices-explorer-container');
+        var urlParams = new URLSearchParams(window.location.search);
+        GeoServicesExplorer.app.init('geoservices-explorer-container', {
+          serverName: urlParams.get('servername'),
+          server: urlParams.get('server')
+        });
    </script>
 </body>
 </html>
